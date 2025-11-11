@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Под знака на Клио - Подготовка за Националната олимпиада по история</title>
+<style>
+    body {
+        margin: 0;
+        font-family: 'Georgia', serif;
+        background-color: #0a0a0a;
+        color: #f2f2f2;
+        overflow-x: hidden;
+    }
+    header {
+        background: #b22222;
+        color: white;
+        text-align: center;
+        padding: 20px 0;
+        font-size: 1.8em;
+        font-weight: bold;
+        letter-spacing: 1px;
+        font-style: italic;
+    }
+    #menu-btn {
+        position: fixed;
+        top: 60px;
+        left: 15px;
+        background-color: #222;
+        border: 2px solid #444;
+        color: white;
+        padding: 10px;
+        cursor: pointer;
+        border-radius: 8px;
+        font-size: 20px;
+        z-index: 1000;
+    }
+    nav {
+        position: fixed;
+        top: 0;
+        left: -320px;
+        width: 300px;
+        height: 100%;
+        background-color: #111;
+        border-right: 3px solid #900;
+        transition: left 0.3s;
+        padding-top: 70px;
+        z-index: 999;
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: #900 #111;
+    }
+    nav::-webkit-scrollbar {
+        width: 8px;
+    }
+    nav::-webkit-scrollbar-track {
+        background: #111;
+    }
+    nav::-webkit-scrollbar-thumb {
+        background-color: #900;
+        border-radius: 10px;
+    }
+    nav.active {
+        left: 0;
+    }
+    nav button {
+        width: 85%;
+        margin: 8px auto;
+        display: block;
+        background-color: #222;
+        color: white;
+        border: none;
+        padding: 10px;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+    nav button:hover {
+        background-color: #900;
+    }
+    .submenu {
+        display: none;
+        margin-left: 20px;
+    }
+    .submenu button {
+        width: 75%;
+        background-color: #333;
+        margin: 6px auto;
+    }
+    main {
+        text-align: center;
+        padding: 50px 20px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+    .quote {
+        font-style: italic;
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    .question {
+        margin-top: 30px;
+        font-size: 1.1em;
+    }
+    input[type="text"] {
+        padding: 10px;
+        border: 2px solid #333;
+        border-radius: 5px;
+        background-color: #111;
+        color: white;
+        width: 250px;
+        text-align: center;
+    }
+    button.submit {
+        padding: 10px 20px;
+        margin-left: 10px;
+        background-color: #006400;
+        border: none;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    iframe {
+        width: 100%;
+        height: 80vh;
+        border: none;
+    }
+</style>
+</head>
+<body>
+    <button id="menu-btn">☰</button>
+    <header>Под знака на Клио<br><small>Подготовка за Националната олимпиада по История</small></header>
+
+<nav id="sidebar">
+    <button onclick="showIframe('index.html')">Начало</button>
+
+    <button onclick="toggleSubmenu('plan')">План-конспекти</button>
+    <div id="plan" class="submenu">
+        <button>Урок I</button>
+        <button>Урок II</button>
+        <button>Урок III</button>
+        <button>Урок IV</button>
+        <button onclick="showIframe('05. Светът на възрожденските българи.pdf')">Урок V</button>
+        <button>Урок VI</button>
+        <button>Урок VII</button>
+        <button>Урок VIII</button>
+        <button>Урок IX</button>
+        <button>Урок X</button>
+    </div>
+
+    <button onclick="toggleSubmenu('textbooks')">Учебници</button>
+    <div id="textbooks" class="submenu">
+        <button onclick="openEFrame('https://ebooks.presveta.bg/7klas')">Просвета VII</button>
+        <button onclick="openEFrame('https://sales.anubis-bulvest.com/epub/textbooks/b7ist/index.html?page=1')">Булвест VII</button>
+        <button onclick="openEFrame('https://sales.anubis-bulvest.com/epub/textbooks/a7ist/index.html?page=1')">Анубис VII</button>
+        <button onclick="window.open('https://ebook.domino.bg/books/10/istoria/#page=1', '_blank')">Домино X</button>
+        <button onclick="openEFrame('https://uchebnicite.bg/7-%D0%BA%D0%BB%D0%B0%D1%81/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-7-%D0%BA%D0%BB%D0%B0%D1%81/')">Рива VII</button>
+        <button onclick="window.open('https://ebook.domino.bg/books/7/atlas/istoria/#page=7', '_blank')">Домино Атлас VII</button>
+        <button onclick="openEFrame('https://uchebnicite.bg/10-%D0%BA%D0%BB%D0%B0%D1%81/%D0%B8%D1%81%D1%82%D0%BE%D1%80%D0%B8%D1%8F-10-%D0%BA%D0%BB%D0%B0%D1%81/')">Рива X </button>
+    </div>
+
+    <button onclick="toggleSubmenu('notebooks')">Учебни пособия</button>
+    <div id="notebooks" class="submenu">
+        <button>Учебни тетрадки</button>
+        <button>Атласи</button>
+        <button>Помагала</button>
+    </div>
+
+    <button onclick="showIframe('path_to_your_sbornici.pdf')">Сборници</button>
+
+    <button onclick="toggleSubmenu('olympiads')">Олимпиади</button>
+    <div id="olympiads" class="submenu">
+        <button onclick="openEFrame('https://docs.google.com/gview?url=https://www.regalia6.com/olimpiads/olimpiads_files/history/2010/ob6tinski/pazardjik/ist6kl.pdf&embedded=true')">Областен кръг 2010, 6 кл. (VII)</button>
+    </div>
+
+    <button onclick="showIframe('Geschichte.html')">Упражнение Олимпия</button>
+    <button onclick="showIframe('Личности.html')">Упражнение Елегия</button>
+    <button onclick="showLiterature()">Препоръчителна литература</button>
+
+    <button onclick="toggleSubmenu('extras')">Допълнително</button>
+    <div id="extras" class="submenu">
+        <button onclick="showIframe('Понятия4.html')">Понятия</button>
+    </div>
+
+    <button onclick="showAdvice()">Съвети за олимпиадата</button>
+    <button>Календар</button>
+</nav>
+
+<main id="content">
+    <div id="main-content">
+        <p class="quote">„Историята помни само победителите.“<br>— Наполеон Бонапарт</p>
+        <p class="question">При откриването на коя сграда княз Фердинанд е освиркан от студенти?</p>
+        <input type="text" id="answer" placeholder="Въведи отговора">
+        <button class="submit" onclick="checkAnswer()">Подай</button>
+    </div>
+
+    <div id="literature" style="display:none;">
+        <h2>Препоръчителна литература</h2>
+        <p>Павлов, Спасов — <em>300 неща от българската история, които всеки трябва да знае</em></p>
+        <p>Цанев — <em>Български хроники, том 2</em></p>
+        <p>Цанев — <em>Български хроники, том 3</em></p>
+        Баева, И., Е. Калинова. Следвоенно-то десетилетие на българската външ на политика 1944-1955 г. С.. 2013.
+        <p>Митев — <em>Лекционен курс по Българското Възраждане</em></p>
+    </div>
+
+    <div id="iframe-container" style="display:none;">
+        <iframe id="iframe"></iframe>
+    </div>
+
+    <div id="advice" style="display:none; text-align:left; line-height:1.6;">
+        <h2 style="text-align:center;">Послание</h2>
+        <p>
+        Драги олимпийци! В България се провеждат десетина олимпиади, имащи национални кръгове.
+        От тях една е и олимпиадата по история. Желая искрено да ви уверя, че вие нямате шанс да бъдете сред първите трима на някоя от тези десет олимпиади.
+        Искрено вярвам, че дори по история сте неспособни. Защо? Защото навярно четете това, вместо да правите упражнения и да изучавате учебника.
+        Дирите краткия път. Прескачате стълби. Значи ще счупите главата си.
+        Аз ще кажа от това гледище, че бях първи. За един миг, за една секунда — вие сте на седмо небе. А сетне?
+        Чувствах се твърде странно. Достигнах до извода, че ако някой просто ми бе дал плакета за първо място, не бих бил доволен.
+        А сега, зная, че съм доволен, защото съм се борил за него.
+        Буда е казал: „Няма щастие накрая на пътя — пътят е щастието“.
+        Прочее, надали мислите, че искате да извървите тоя път.
+        Защото, не знаете какво е да си кажете, че в цялата страна от стотиците участници в олимпиадата — вие сте най-добри.
+        Разберете — веднъж имате шанса да изпитате това несравнимо усещане, веднъж.
+        Нямате право да го изпуснете. Защото по-сетне няма да ви простят.
+        Но, не! Оставете другите. Вие няма да си простите.
+        </p>
+    </div>
+</main>
+
+<script>
+    const sidebar = document.getElementById('sidebar');
+    const menuBtn = document.getElementById('menu-btn');
+    const mainContent = document.getElementById('main-content');
+    const literature = document.getElementById('literature');
+    const iframeContainer = document.getElementById('iframe-container');
+    const iframe = document.getElementById('iframe');
+    const advice = document.getElementById('advice');
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('active');
+    });
+
+    function toggleSubmenu(id) {
+        const submenu = document.getElementById(id);
+        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+    }
+
+    function showIframe(page) {
+        mainContent.style.display = 'none';
+        literature.style.display = 'none';
+        advice.style.display = 'none';
+        iframeContainer.style.display = 'block';
+        iframe.src = page;
+    }
+
+    function openEFrame(url) {
+        mainContent.style.display = 'none';
+        literature.style.display = 'none';
+        advice.style.display = 'none';
+        iframeContainer.style.display = 'block';
+        iframe.src = url;
+    }
+
+    function showLiterature() {
+        mainContent.style.display = 'none';
+        iframeContainer.style.display = 'none';
+        advice.style.display = 'none';
+        literature.style.display = 'block';
+    }
+
+    function showAdvice() {
+        mainContent.style.display = 'none';
+        iframeContainer.style.display = 'none';
+        literature.style.display = 'none';
+        advice.style.display = 'block';
+    }
+
+    function checkAnswer() {
+        const input = document.getElementById('answer');
+        if (input.value.trim().toLowerCase() === "народния театър" || input.value.trim().toLowerCase() === "народен театър") {
+            input.style.borderColor = "green";
+            input.style.backgroundColor = "#003300";
+        } else {
+            input.style.borderColor = "red";
+            input.style.backgroundColor = "#330000";
+        }
+    }
+</script>
+</body>
+</html>
